@@ -1,0 +1,55 @@
+body {
+ background: $bg-color;
+}
+
+@import url('https://fonts.googleapis.com/css?family=Roboto');
+
+$base-font: 'Roboto';
+$title-padding: 3em;
+
+h1 {
+ font-family: $base-font;
+ padding: $title-padding;
+}
+
+.none {
+  display: none !important;
+}
+
+.article {
+  background: #FFF;
+  border: 1px solid rgba(181, 82, 60, 0.82);
+  width: 600px;
+  margin: 0 0 5px;
+  box-shadow: 2px 2px 5px -1px rgba(57, 25, 17, 0.82);
+  padding: 3px 5px;
+}
+
+.news__author {
+  text-decoration: underline;
+  color: rgba(181, 82, 60, 0.82);;
+}
+.news__count {
+  margin: 10px 0 0 0;
+  display: block;
+}
+
+.pseudo-enter {
+    max-height: 0;
+    overflow: hidden;
+}
+.pseudo-enter.pseudo-enter-active {
+    height: auto;
+    max-height: 180px;
+    overflow: hidden;
+    transition: max-height .25s ease-in;
+}
+.pseudo-leave {
+    max-height: 180px;
+    overflow: hidden;
+}
+.pseudo-leave.pseudo-leave-active {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height .25s ease-out;
+}

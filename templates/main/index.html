@@ -1,0 +1,15 @@
+{% load static %}
+{% load render_bundle from webpack_loader %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Musiz - home</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    {% render_bundle 'main' 'css' %}
+</head>
+<body>
+    <div id="app"></div>
+    {% render_bundle 'vendor' 'js' %}
+    {% render_bundle 'main' 'js' %}
+</body>
+</html>
