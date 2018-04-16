@@ -5,9 +5,7 @@ const Cards = props => {
         <div className="row">
             {[...Array(9)].map((x, i) =>
                 <div className="col-md-4" key={i}>
-                    <img className="card-img-top"
-                         data-src="holder.js/100px225?theme=thumb&bg=55595c&fg=eceeef&text=Thumbnail"
-                         alt="Card image cap"/>
+                    <img className="card-img-top" src="" alt="Card image cap"/>
                     <div className="card-body">
                         <p className="card-text mb-0">Voices of the streets</p>
                         <small className="text-muted">139 tracks - 7h 12m</small>
