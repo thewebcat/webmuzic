@@ -15,7 +15,8 @@ class PseudoSelect extends Component {
         super(props);
         this.state = {
             showList: false,
-            value: ''
+            value: '',
+            title: 'Выберите элемент'
         }
     }
 
@@ -24,13 +25,14 @@ class PseudoSelect extends Component {
     };
 
     onSelectElementHandler (e) {
-        this.setState({value: e});
+        this.setState({value: e.value, title: e.label});
+        this.setState({showList: false});
     };
 
     renderList() {
         const items = [];
         dictionary.forEach(entry => items.push(
-            <li className={"pseudo-select__option " + (this.state.value == entry.value ? 'current' : '')} onClick={this.onSelectElementHandler.bind(this, entry.value)}>{entry.label}</li>
+            <li className={"pseudo-select__option " + (this.state.value === entry.value ? 'current' : '')} onClick={this.onSelectElementHandler.bind(this, entry)}>{entry.label}</li>
         ));
         return (
             <ul className="pseudo-select__list" >
@@ -43,7 +45,7 @@ class PseudoSelect extends Component {
     renderSelect() {
         const items = [];
         dictionary.forEach(entry => items.push(
-            <option value={entry.value} selected={this.state.value == entry.value}>{entry.label}</option>
+            <option value={entry.value} selected={this.state.value === entry.value}>{entry.label}</option>
         ));
         return (
             <select name="status" value={this.state.value} className="pseudo-select__real">
@@ -57,7 +59,7 @@ class PseudoSelect extends Component {
             <div className="pseudo-select">
                 <div className="pseudo-select__control" onClick={this.onClickHandler}>
                     <div className="pseudo-select__arrow"><span className="fa fa-caret-down">&nbsp;</span></div>
-                    <div className="pseudo-select__text">Все новости</div>
+                    <div className="pseudo-select__text">{this.state.title}</div>
                 </div>
                 <ReactCSSTransitionGroup transitionName="pseudo"
                                          transitionEnterTimeout={250}

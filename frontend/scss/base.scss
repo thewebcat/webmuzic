@@ -1,7 +1,16 @@
+// Normalize
 @import "normalize";
+
+// Awesome Font and Bootstrap
 $fa-font-path: "~font-awesome/fonts";
 @import "~font-awesome/scss/font-awesome";
 @import "~bootstrap/scss/bootstrap.scss";
+
+// Variables
 @import "variables";
-@import "mixins/_mix-rem.scss";
+
+// Mixins
+@import "mixins/mix-rem";
+
+// Partials
 @import "partials";
