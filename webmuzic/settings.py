@@ -57,7 +57,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'muzis.urls'
+ROOT_URLCONF = 'webmuzic.urls'
 
 TEMPLATES = [
     {
@@ -76,7 +76,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'muzis.wsgi.application'
+WSGI_APPLICATION = 'webmuzic.wsgi.application'
 
 
 # Database
