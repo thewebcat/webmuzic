@@ -29,7 +29,6 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -39,9 +38,17 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 ]
 
+# pip apps
 INSTALLED_APPS += [
     'corsheaders',
     'webpack_loader',
+    'rest_framework',
+]
+
+# my apps
+INSTALLED_APPS += [
+    'api_v0',
+    'catalog',
 ]
 
 CORS_ORIGIN_ALLOW_ALL = True
