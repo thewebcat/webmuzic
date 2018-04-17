@@ -43,6 +43,7 @@ INSTALLED_APPS += [
     'corsheaders',
     'webpack_loader',
     'rest_framework',
+    'django_filters',
 ]
 
 # my apps

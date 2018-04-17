@@ -1,0 +1,18 @@
+.tracklist {
+  font-size: 13px;
+
+  &__tracklist-header {
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  &__num, &__title {
+    color: black;
+  }
+
+  &__title {font-weight: bold;}
+
+  li {
+    border-bottom: 1px solid $color-grey-light;
+  }
+}
