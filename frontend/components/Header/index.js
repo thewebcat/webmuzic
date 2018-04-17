@@ -9,16 +9,13 @@ const Nav = () => (
             <Link className="navbar__nav-item" to='/'>Home</Link>
         </li>
         <li>
-            <Link className="navbar__nav-item" to='/admin'>Artists</Link>
+            <Link className="navbar__nav-item" to='/artists'>Artists</Link>
         </li>
         <li>
-            <Link className="navbar__nav-item" to='/genre'>Releases</Link>
+            <Link className="navbar__nav-item" to='/albums'>Albums</Link>
         </li>
         <li>
-            <Link className="navbar__nav-item" to='/genre'>Tours</Link>
-        </li>
-        <li>
-            <Link className="navbar__nav-item" to='/genre'>Contact</Link>
+            <Link className="navbar__nav-item" to='/contact'>Contact</Link>
         </li>
     </ul>
 );
@@ -26,21 +23,20 @@ const Nav = () => (
 const Dropdown = (props) => (
     <div className={"dropdown-menu " + (props.showDropdown ? "d-block" : "")}>
         <Link className="navbar__nav-item" to='/'>Home</Link>
-        <Link className="navbar__nav-item" to='/admin'>Artists</Link>
-        <Link className="navbar__nav-item" to='/genre'>Releases</Link>
-        <Link className="navbar__nav-item" to='/genre'>Tours</Link>
-        <Link className="navbar__nav-item" to='/genre'>Contact</Link>
+        <Link className="navbar__nav-item" to='/artists'>Artists</Link>
+        <Link className="navbar__nav-item" to='/albums'>Albums</Link>
+        <Link className="navbar__nav-item" to='/contact'>Contact</Link>
     </div>
 );
 
 const Auth = () => (
     <ul className="navbar-nav ml-auto ml-5">
         <li>
-            <Link className="navbar__nav-item" to='/genre'>Log in</Link>
+            <Link className="navbar__nav-item" to='/'>Log in</Link>
         </li>
         <span className="navbar__sep d-none d-md-block">or</span>
         <li>
-            <Link className="navbar__nav-item" to='/genre'>Register</Link>
+            <Link className="navbar__nav-item" to='/'>Register</Link>
         </li>
     </ul>
 );
@@ -96,6 +92,6 @@ class Header extends Component {
             </nav>
         )
     }
-};
+}
 
 export default Header

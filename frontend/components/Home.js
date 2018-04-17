@@ -1,6 +1,9 @@
 import React, { Component } from 'react'
+import moment from 'moment'
+import momentDurationFormatSetup from 'moment-duration-format'
 
-const Artists = props => {
+
+export const ArtistsList = props => {
     return (
         <div className="row">
             {props.artists.map((item, i) =>
@@ -8,8 +11,7 @@ const Artists = props => {
                     <img className="card-img-top" src={item.image_url} alt="Card image cap"/>
                     <div className="card-body">
                         <p className="card-text mb-0">{item.name}</p>
-                        <small className="text-muted">139 tracks - 7h 12m</small>
-
+                        <small className="text-muted">{item.total_albums} albums - {moment.duration(item.total_duration, "seconds").format("M[m] d[d] h:mm:ss")}</small>
                     </div>
                 </div>
             )}
@@ -18,7 +20,7 @@ const Artists = props => {
 };
 
 
-const Albums = props => {
+export const AlbumsList = props => {
     return (
         <div className="row">
             {props.albums.map((item, i) =>
@@ -26,7 +28,7 @@ const Albums = props => {
                     <img className="card-img-top" src={item.image_url} alt="Card image cap"/>
                     <div className="card-body">
                         <p className="card-text mb-0">{item.name}</p>
-                        <small className="text-muted">139 tracks - 7h 12m</small>
+                        <small className="text-muted">{item.total_tracks} tracks - {moment.duration(item.total_duration, "seconds").format("M[m] d[d] h:mm:ss")}</small>
 
                     </div>
                 </div>
@@ -61,9 +63,9 @@ class Home extends Component {
             <div>
                 <div className="container">
                     <p>New artists</p>
-                    <Artists artists={this.state.artists}/>
+                    <ArtistsList artists={this.state.artists}/>
                     <p>New albums</p>
-                    <Albums albums={this.state.albums}/>
+                    <AlbumsList albums={this.state.albums}/>
                 </div>
                 <div className="container">
                     <div className="row">
@@ -103,7 +105,6 @@ class Home extends Component {
             </div>
         )
     }
-
-};
+}
 
 export default Home
