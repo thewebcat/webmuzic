@@ -9,8 +9,7 @@ class Player extends Component {
 
         this.state = {
             progress: 0,
-            in_set_progress_mode: false,
-            _player: ''
+            in_set_progress_mode: false
         };
 
         this.playing_id = null;
