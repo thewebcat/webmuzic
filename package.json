@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "dev": "webpack --config webpack.local.config.js --mode development --progress --colors",
-    "watch": "webpack-dev-server --config webpack.local.config.js"
+    "watch": "webpack-dev-server --config webpack.local.config.js --mode development --progress --colors",
+    "prod": "webpack --config webpack.prod.config.js --mode production"
   },
   "author": "kot",
   "license": "ISC",

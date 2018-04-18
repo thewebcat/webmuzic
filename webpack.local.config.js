@@ -16,23 +16,13 @@ config.devtool = false;
 
 config.cache = true;
 
-config.output = {
-    path: path.resolve(__dirname, 'frontend/bundles'),
-    filename: '[name]-[hash].js',
-    publicPath: 'http://localhost:3030/frontend/bundles/'
-};
+config.output.publicPath = 'http://localhost:3030/frontend/bundles/';
 
 config.plugins = [
     new webpack.HotModuleReplacementPlugin(),
     new BundleTracker({filename: './webpack-stats.json'}),
     new webpack.NoEmitOnErrorsPlugin(), // don't reload if there is an error
-    new ExtractTextPlugin({ filename: 'style.css', disable: false, allChunks: true }),
-    new webpack.DefinePlugin({
-        'process.env': {
-            NODE_ENV: JSON.stringify('development'),
-            BASE_URL: JSON.stringify('http://0.0.0.0:8000/'),
-        }
-    })
+    new ExtractTextPlugin({ filename: 'style.css', disable: false, allChunks: true })
 ];
 
 config.devServer = {

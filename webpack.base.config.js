@@ -6,6 +6,10 @@ module.exports = {
         extensions: [".js", ".jsx", ".scss"],
         modules: ["node_modules", "bower_components"]
     },
+    output: {
+        path: path.resolve(__dirname, 'frontend/bundles'),
+        filename: '[name]-[hash].js'
+    },
     module: {
         rules: [
             {

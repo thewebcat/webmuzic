@@ -140,9 +140,22 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "frontend"),
 ]
 
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
+
 WEBPACK_LOADER = {
     'DEFAULT': {
         'BUNDLE_DIR_NAME': 'bundles/',
         'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats.json'),
     }
 }
+
+try:
+    from local_settings import *
+except ImportError:
+    pass
+
+if not DEBUG:
+    WEBPACK_LOADER['DEFAULT'].update({
+        'BUNDLE_DIR_NAME': 'dist/',
+        'STATS_FILE': os.path.join(BASE_DIR, 'webpack-stats-prod.json'),
+    })
