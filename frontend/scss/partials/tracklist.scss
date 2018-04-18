@@ -10,7 +10,41 @@
     color: black;
   }
 
+  &__track:hover &__play {
+    //height: auto;
+    //width: auto;
+    visibility: visible;
+    opacity: 1;
+  }
+
+  &__track:hover &__num {
+    visibility: hidden;
+  }
+
   &__title {font-weight: bold;}
+
+  &__play, &__pause{
+    padding: 3px 2px 3px 6px;
+    background: #000;
+    display: inline-block;
+    cursor: pointer;
+    position: absolute;
+    left: 0;
+
+
+    & .fa {
+      color: white;
+      font-size: 14px;
+    }
+  }
+
+  &__play {
+
+    opacity: 0;
+    visibility: hidden;
+    transition: visibility 0s, opacity 0.2s linear;
+  }
+
 
   li {
     border-bottom: 1px solid $color-grey-light;

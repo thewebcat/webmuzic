@@ -8,7 +8,7 @@ class AlbumDetails extends Component {
         super(props);
         this.state = {
             album: {}, tracks: [],
-            song: {id: '', name: '', duration: ''}
+            //song: {}
         };
         this.song_counter = 0
     }
@@ -37,6 +37,23 @@ class AlbumDetails extends Component {
         this.setState({is_playing: !this.state.is_playing});
     };
 
+    togglePlayFromList = (e, i) => {
+        if (!this.state.is_playing) {
+            this.setState({
+                song: i,
+                is_playing: !this.state.is_playing
+            })
+        } else {
+            if (this.state.song.id !== i.id) {
+                this.setState({
+                    song: i
+                })
+            } else {
+                this.setState({is_playing: !this.state.is_playing})
+            }
+        }
+    };
+
     onNext = () => {
         if (this.song_counter < this.state.tracks.length) {
             this.song_counter += 1;
@@ -62,8 +79,8 @@ class AlbumDetails extends Component {
                 <div className="row m-0 p-0 align-items-top" >
                     <div className="col-12 col-md-6 col-lg-4">
                         <div className="mx-auto text-center album__cover">
-                            <img className="d-inline-block d-md-block " src={this.state.album.image_url} alt={this.state.album.name}/>
-                            <div className="my-3 p-3 d-inline-block text-justify album__text">
+                            <img className="" src={this.state.album.image_url} alt={this.state.album.name}/>
+                            <div className="my-3 text-justify album__text">
                                 Believe is the twenty-second studio album by American singer-actress Cher, first released on October 22, 1998 by WEA and distributed in North America by Warner Bros. Records. Following the failure of her previous studio album It's a Man's World, her record company encouraged her to return to the studio to pursue a new musical direction. Recording took place over the summer at the Dreamhouse Studios in London and the Soundworks Studios in New York under the guidance of English producers Mark Taylor and Brian Rawling. The album was dedicated to her ex-husband Sonny Bono, who died earlier that year.
                             </div>
                         </div>
@@ -72,17 +89,18 @@ class AlbumDetails extends Component {
                         <AlbumInfo album={this.state.album} togglePlay={this.togglePlay}/>
                     </div>
                     <div className="col-12 col-md-6 col-lg-5">
-                        <TrackList tracks={this.state.tracks} song={this.state.song}/>
+                        <TrackList tracks={this.state.tracks}
+                                   song={this.state.song}
+                                   is_playing={this.state.is_playing}
+                                   togglePlayFromList={this.togglePlayFromList}/>
                     </div>
                 </div>
-                <Player
-                    onPrev={this.onPrev}
-                    onNext={this.onNext}
-                    artist={this.state.artist}
-                    song={this.state.song}
-                    is_playing={this.state.is_playing}
-                    togglePlay={this.togglePlay}
-                />
+                <Player onPrev={this.onPrev}
+                        onNext={this.onNext}
+                        artist={this.state.artist}
+                        song={this.state.song}
+                        is_playing={this.state.is_playing}
+                        togglePlay={this.togglePlay}/>
             </div>
         )
     }

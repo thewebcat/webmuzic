@@ -5,7 +5,7 @@ const TrackList = (props) => {
     return (
         <div className="tracklist">
             <p className="tracklist__tracklist-header">Tracklist</p>
-            <Tracks tracks={props.tracks} song={props.song}/>
+            {props.song ? <Tracks tracks={props.tracks} song={props.song} is_playing={props.is_playing} togglePlayFromList={props.togglePlayFromList}/> : ''}
         </div>
     )
 };

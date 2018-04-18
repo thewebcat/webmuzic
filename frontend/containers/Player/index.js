@@ -56,13 +56,15 @@ class Player extends Component {
     };
 
     componentDidUpdate() {
-        if (!this.playing_id) {
-            this.playing_id = this.props.song.id;
-        }
+        if (this.props.song) {
+            if (!this.playing_id) {
+                this.playing_id = this.props.song.id;
+            }
 
-        if (this.playing_id !== this.props.song.id) {
-            this._player.src = ddt; // emulate song change
-            this.playing_id = null  // ++
+            if (this.playing_id !== this.props.song.id) {
+                this._player.src = ddt; // emulate song change
+                this.playing_id = null  // ++
+            }
         }
     }
 
@@ -105,7 +107,7 @@ class Player extends Component {
                     <a onClick={this.props.onNext}><i className="fa fa-chevron-right" aria-hidden="true">&nbsp;</i></a>
                 </div>
                 <div className="track_info">
-                    <div className="title">{this.props.song.name}</div>
+                    <div className="title">{this.props.song ? this.props.song.name : ''}</div>
                     <div className="artist">{this.props.artist}</div>
                 </div>
                 <div
