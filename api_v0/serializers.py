@@ -41,12 +41,14 @@ class TrackSerializer(serializers.ModelSerializer):
 class AlbumDetailSerializer(serializers.ModelSerializer):
     total_tracks = serializers.IntegerField()
     total_duration = serializers.IntegerField()
+    artist = serializers.StringRelatedField()
     track_set = TrackSerializer(many=True, read_only=True)
 
     class Meta:
         model = Album
         fields = [
             'name',
+            'artist',
             'image_url',
             'total_tracks',
             'total_duration',

@@ -41,7 +41,7 @@ class Albums extends Component {
                 <div className="container">
                     <p>All albums</p>
                     <AlbumsList albums={this.state.albums}/>
-                    <div className="text-center"><button className="btn" onClick={this.loadMore}>Load more</button></div>
+                    <div className="text-center"><button className="btn btn-secondary" onClick={this.loadMore}>Load more</button></div>
                 </div>
             </div>
         )

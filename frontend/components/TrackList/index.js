@@ -1,11 +1,11 @@
 import React from 'react'
 import Tracks from "../Tracks";
 
-const TrackList = ({tracks}) => {
+const TrackList = (props) => {
     return (
         <div className="tracklist">
             <p className="tracklist__tracklist-header">Tracklist</p>
-            <Tracks tracks={tracks}/>
+            <Tracks tracks={props.tracks} song={props.song}/>
         </div>
     )
 };

@@ -40,7 +40,7 @@ class Artists extends Component {
                 <div className="container">
                     <p>All artists</p>
                     <ArtistsList artists={this.state.artists}/>
-                    <div className="text-center"><button className="btn" onClick={this.loadMore}>Load more</button></div>
+                    <div className="text-center"><button className="btn btn-secondary" onClick={this.loadMore}>Load more</button></div>
                 </div>
             </div>
         )

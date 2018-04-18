@@ -4,13 +4,16 @@ import moment from "moment/moment";
 import Tracks from "../../components/Tracks";
 import TrackList from "../../components/TrackList";
 import AlbumInfo from "../../components/AlbumInfo";
+import Player from "../Player";
 
 class AlbumDetails extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            album: {}, tracks: []
-        }
+            album: {}, tracks: [],
+            song: {id: '', name: '', duration: ''}
+        };
+        this.song_counter = 0
     }
 
     async loadAlbum() {
@@ -22,13 +25,39 @@ class AlbumDetails extends Component {
                 total_tracks: album_response.total_tracks,
                 total_duration: album_response.total_duration
             },
-            tracks: album_response.track_set
-        })
+            artist: album_response.artist,
+            tracks: album_response.track_set,
+            song: album_response.track_set[0],
+            is_playing: false,
+        });
     }
 
     componentDidMount() {
         this.loadAlbum();
     }
+
+    togglePlay = () => {
+        this.setState({is_playing: !this.state.is_playing});
+    };
+
+    onNext = () => {
+        if (this.song_counter < this.state.tracks.length) {
+            this.song_counter += 1;
+            this.setState({
+                song: this.state.tracks[this.song_counter]
+            });
+            console.log(this.state.tracks)
+        }
+    };
+
+    onPrev = () => {
+        if (this.song_counter >= 0) {
+            if (this.song_counter > 0) this.song_counter -= 1;
+            this.setState({
+                song: this.state.tracks[this.song_counter]
+            });
+        }
+    };
 
     render () {
         return (
@@ -43,12 +72,20 @@ class AlbumDetails extends Component {
                         </div>
                     </div>
                     <div className="col-xs-12 d-none d-lg-block col-lg-3 col-xl-4">
-                        <AlbumInfo album={this.state.album}/>
+                        <AlbumInfo album={this.state.album} togglePlay={this.togglePlay}/>
                     </div>
                     <div className="col-xs-12 w-100 pr-5">
-                        <TrackList tracks={this.state.tracks}/>
+                        <TrackList tracks={this.state.tracks} song={this.state.song}/>
                     </div>
                 </div>
+                <Player
+                    onPrev={this.onPrev}
+                    onNext={this.onNext}
+                    artist={this.state.artist}
+                    song={this.state.song}
+                    is_playing={this.state.is_playing}
+                    togglePlay={this.togglePlay}
+                />
             </div>
         )
     }

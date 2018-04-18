@@ -83,7 +83,7 @@ class Header extends Component {
                     <ul className="navbar-nav mr-auto ml-5 navbar__nav-dropdown">
                         <li className="nav-item dropdown">
                             <a className="dropdown-toggle navbar__nav-item" href="#"
-                               onClick={this.dropdownHandler}>Dropdown</a>
+                               onClick={this.dropdownHandler}>Menu</a>
                                 <Dropdown showDropdown={this.state.showDropdown} />
                         </li>
                     </ul>
