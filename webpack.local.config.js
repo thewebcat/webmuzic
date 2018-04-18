@@ -25,6 +25,20 @@ config.plugins = [
     new ExtractTextPlugin({ filename: 'style.css', disable: false, allChunks: true })
 ];
 
+config.module.rules.push(
+    {
+        test: /\.mp3$/,
+        exclude: /(node_modules|bower_components)/,
+        use: [{
+            loader: "file-loader",
+            options: {
+                name: '[name].[ext]'
+            }
+        }]
+    }
+);
+
+
 config.devServer = {
     inline: true,
     hot: true,

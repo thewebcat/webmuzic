@@ -50,13 +50,6 @@ module.exports = {
                         //publicPath: 'fonts/'       // override the default path
                     }
                 }]
-            },
-            {
-                test: /\.mp3$/,
-                exclude: /(node_modules|bower_components)/,
-                use: [
-                    { loader: "file-loader" }
-                ]
             }
         ]
     },

@@ -22,6 +22,20 @@ config.plugins = [
 
 ];
 
+config.module.rules.push(
+    {
+        test: /\.mp3$/,
+        exclude: /(node_modules|bower_components)/,
+        use: [{
+            loader: "file-loader",
+            options: {
+                name: '[name].[ext]',
+                publicPath: '/static/dist/'
+            }
+        }]
+    }
+);
+
 config.optimization = {
     minimize: true,
     runtimeChunk: {
