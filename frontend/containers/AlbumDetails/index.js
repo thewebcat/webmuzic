@@ -7,7 +7,8 @@ class AlbumDetails extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            album: {}, tracks: [],
+            album: {},
+            tracks: [],
             //song: {}
         };
         this.song_counter = 0
@@ -20,7 +21,8 @@ class AlbumDetails extends Component {
                 name: album_response.name,
                 image_url: album_response.image_url,
                 total_tracks: album_response.total_tracks,
-                total_duration: album_response.total_duration
+                total_duration: album_response.total_duration,
+                tags: album_response.tags
             },
             artist: album_response.artist,
             tracks: album_response.track_set,

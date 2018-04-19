@@ -1,10 +1,17 @@
 from rest_framework import serializers
-from catalog.models import Artist, Album, Track
+from catalog.models import Artist, Album, Track, Tag
+
+
+class TagSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Tag
+        fields = ('id', 'name', 'color')
 
 
 class ArtistListSerializer(serializers.ModelSerializer):
     total_albums = serializers.IntegerField()
     total_duration = serializers.IntegerField()
+    tags = TagSerializer(many=True, read_only=True)
 
     class Meta:
         model = Artist
@@ -14,12 +21,14 @@ class ArtistListSerializer(serializers.ModelSerializer):
             'image_url',
             'total_albums',
             'total_duration',
+            'tags'
         ]
 
 
 class AlbumListSerializer(serializers.ModelSerializer):
     total_tracks = serializers.IntegerField()
     total_duration = serializers.IntegerField()
+    tags = TagSerializer(many=True, read_only=True)
 
     class Meta:
         model = Album
@@ -29,6 +38,7 @@ class AlbumListSerializer(serializers.ModelSerializer):
             'image_url',
             'total_tracks',
             'total_duration',
+            'tags',
         ]
 
 
@@ -42,6 +52,7 @@ class AlbumDetailSerializer(serializers.ModelSerializer):
     total_tracks = serializers.IntegerField()
     total_duration = serializers.IntegerField()
     artist = serializers.StringRelatedField()
+    tags = TagSerializer(many=True, read_only=True)
     track_set = TrackSerializer(many=True, read_only=True)
 
     class Meta:
@@ -53,4 +64,5 @@ class AlbumDetailSerializer(serializers.ModelSerializer):
             'total_tracks',
             'total_duration',
             'track_set',
+            'tags',
         ]

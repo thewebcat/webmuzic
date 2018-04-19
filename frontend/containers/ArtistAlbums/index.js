@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {AlbumsList, ArtistsList} from '../Home'
+import AlbumsList from "../../components/AlbumsList";
 
 class ArtistAlbums extends Component {
     constructor(props) {
@@ -40,7 +40,7 @@ class ArtistAlbums extends Component {
                 <div className="container">
                     <p>Artist albums</p>
                     <AlbumsList albums={this.state.albums}/>
-                    <div className="text-center"><button className="btn" onClick={this.loadMore}>Load more</button></div>
+                    <div className="text-center"><button className="btn btn-secondary" onClick={this.loadMore}>Load more</button></div>
                 </div>
             </div>
         )

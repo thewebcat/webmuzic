@@ -1,16 +1,21 @@
 from django.contrib import admin
 
-from catalog.models import Artist, Album, Track
+from catalog.models import Artist, Album, Track, Tag
+
+
+@admin.register(Tag)
+class TagAdmin(admin.ModelAdmin):
+    pass
 
 
 @admin.register(Artist)
 class ArtistAdmin(admin.ModelAdmin):
-    pass
+    search_fields = ("name",)
 
 
 @admin.register(Album)
 class AlbumAdmin(admin.ModelAdmin):
-    pass
+    search_fields = ("name",)
 
 
 @admin.register(Track)

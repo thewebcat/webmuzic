@@ -1,5 +1,6 @@
 import React from 'react'
 import moment from "moment/moment";
+import Tags from "../Tags";
 
 const AlbumInfo = (props) => {
     return (
@@ -8,6 +9,7 @@ const AlbumInfo = (props) => {
             <div className="pt-3 text-black-50 lead">
                 <small>{props.album.total_tracks} tracks - {moment.duration(props.album.total_duration, "seconds").format("h[h] mm[m] ss[s]")}</small>
             </div>
+            <Tags tags={props.album.tags}/>
             <div className="d-inline-block mt-5 p-4 album-info__play-button" onClick={props.togglePlay}>
                 <i className="fa fa-play">&nbsp;</i>
             </div>
