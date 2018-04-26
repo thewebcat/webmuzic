@@ -1,7 +1,12 @@
+from django.contrib.auth.models import User
 from django.db.models import Sum, Count
 from rest_framework import viewsets
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework.authentication import SessionAuthentication, BasicAuthentication
 from rest_framework.pagination import PageNumberPagination
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.response import Response
+from rest_framework.views import APIView
 
 from api_v0.serializers import *
 
@@ -51,3 +56,22 @@ class AlbumViewSet(viewsets.ReadOnlyModelViewSet):
         if self.action == 'list':
             return AlbumListSerializer
         return AlbumDetailSerializer
+
+
+class MyBasicAuthentication(BasicAuthentication):
+
+    def authenticate(self, request):
+        user, _ = super(MyBasicAuthentication, self).authenticate(request)
+        login(request, user)
+        return user, _
+
+class ExampleView(APIView):
+    authentication_classes = (SessionAuthentication, BasicAuthentication)
+    permission_classes = (IsAuthenticated,)
+
+    def get(self, request, format=None):
+        content = {
+            'user': str(request.user),  # `django.contrib.auth.User` instance.
+            'auth': str(request.auth),  # None
+        }
+        return Response(content)
